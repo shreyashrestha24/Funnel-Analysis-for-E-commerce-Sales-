@@ -1,47 +1,65 @@
-# Funnel Analysis for E-commerce Sales
+# Funnel Analysis for E-commerce Sales 💰 💰 💰 
 
-### Project Overview (Project Description)
+### Project Overview 
 
-This repository contains a funnel analysis of e-commerce user behavior, tracking how visitors progress from landing on the home page through to completing a successful purchase. The goal of this project is to identify where the largest drop-offs occur in the conversion funnel and recommend data-driven strategies to improve customer retention and increase overall sales performance. It also aims to explain how different groups behave, for example mobile users, users from different counties, and differing referral sources. 
+Today we will be conducting a funnel analysis of e-commerce user behavior, tracking how visitors progress from landing on the home page, to product viewing, to adding products to their cart, and finally to completing a successful purchase. Throughout this funnel, customers may exit the journey at a certain stage, resulting in missed revenue opportunities.
 
-### Executive Summary (Results & Insights) 
+The goal of this project is to identify where the largest drop-offs occur in the conversion funnel, and investigate why they might occur. Furthermore, we dig deeper into which customer groups are most at risk of churn, by comparing funnel conversion rates between mobile vs desktop users, customers from different counties, and differing referral sources.
 
-A funnel analysis measures how users move through each stage of their online purchasing journey — from home page visit, to product view, to cart activity, and finally to completed purchase. At each step, some users exit the process, resulting in conversion loss and missed revenue opportunities.
+By identifying where and what type of users drop off, we can propose data-driven strategies to improve flow efficiency, customer retention and overall sales performance.
 
-This analysis evaluates user progression across funnel stages, quantifies conversion rates, and highlights the stage with the highest churn. By identifying where and how users drop off, we can propose strategies to improve flow efficiency and conversion outcomes.
+<img width="600" height="315" alt="image" src="https://github.com/user-attachments/assets/564615ce-f14e-4b9e-b7df-582b44830d72" />
 
-Based on the analysis, the following strategies are suggested to reduce customer churn at each stage, and increase sales:
+### Executive Summary 
 
-### Dataset
+This analysis evaluates user progression across funnel stages, quantifies conversion rates, and highlights customer groups with the highest churn.
 
-The Dataset was obtained from Kaggle and can be found this link () for your own analysis. 
+Based on the analysis, the following strategies are suggested to reduce improve flow efficiency, conversions, to reduce customer churn at each stage, and increase sales:
+1. 
+
+2.
+
+3.
+
+### E-commerce Dataset
+
+The Dataset was obtained from Kaggle and can be found this link (https://www.kaggle.com/datasets/sufya6/e-commerce-customer-journey-click-to-conversion) for your own analysis. 
 
 The dataset has the following format:
+<img width="856" height="97" alt="image" src="https://github.com/user-attachments/assets/24b0ba20-19b1-4cba-8b92-dfb0bfb943e0" />
 
-SessionID	UserID	Timestamp	PageType	DeviceType	Country	ReferralSource	TimeOnPage_seconds	ItemsInCart	Purchased
-session_0	user_2223	20/01/2025 22:53	home	Desktop	India	Social Media	55	0	0
-session_1	user_2192	26/02/2025 12:57	home	Tablet	Germany	Email	99	0	0
-session_1	user_2192	26/02/2025 12:59	product_page	Tablet	Germany	Email	121	0	0
-session_2	user_1708	24/06/2025 15:40	home	Mobile	India	Google	160	0	0
-session_3	user_2976	11/06/2025 07:21	home	Tablet	UK	Google	113	0	0 <img width="856" height="97" alt="image" src="https://github.com/user-attachments/assets/24b0ba20-19b1-4cba-8b92-dfb0bfb943e0" />
+
+| Dataset Column| Defintion     |
+| -------------   | ------------- |
+| SessionID  | A unique identifier for each session a customer initiates  |
+| UserID    | A unique identifier for each customer  |
+| Timestamp | Date and time customer has viewed the page |
+| PageType  | Type of page customer is visiting in the Funnel  |
+| DeviceType | Device that customer is using  |
+| Country	  | Customer's country  |
+| ReferralSource | Way that customer was referred to e-commerce site  |
+| TimeOnPage_seconds | Time spent on each page in the funnel measured in seconds  |
+| ItemsInCart | Frequency of items in a users cart per unique session  |
+| Purchased  | Frequency of items that were successfully purchased  |
 
 ### Tools
 
-The funnel analysis was primarily conducted using SQL via DB Browser. 
+Analysis for this project was conducted using SQL via DB Browser for SQLite. Visualisations were created in Excel. 
 
 ### Methodology 
-iejeie
 
-SQL Query for Funnel Analysis
+Firstly, the Kaggle dataset was downloaded as a .csv and loaded into Excel for initial inspection.
+Secondly, the dataset was loaded into DB Brower and appropriate SQL queries were created based on the analysis questions. 
 
-This Query was written to calculate conversion percentages between each step. 
-The query is comprised of CTEs, subqueries, and can be found in this repository. 
+The first query was written to calculate the raw number of customers at each step along with the conversion percentages between each step. The query is comprised of CTEs, subqueries, and can be found in this repository. 
 
-Extra segmentation steps were performed to see if and how different DeviceType, Country, ReferralSource groups behave.
+Following this, queries were written to perform additional segmentation steps to investigate how different customer groups (DeviceType, Country, ReferralSource) behave.
+
+The query results were loaded into Excel, and appropriate visualisations (Funnel charts, Clustered bar chart) were created.
 
 ### User Funnel Journey
 
-The funnel consists of 5 stages:
+The customer journey funnel consists of 5 stages:
 
   1. Visited Home Page: Users who landed on the Home Page, perhaps through search engines, advertisements, referrals. This represents the total initial traffic entering the funnel.
 
@@ -53,32 +71,34 @@ The funnel consists of 5 stages:
 
   5. Purchase Confirmed: Users who have completed a successful purchase and received a order confirmation. This represents the final stage of the funnel.
 
-### Results
+### Preliminary Results (Before Segmentation)
 
-Raw User Counts
-Shows the number of users who reached each step of the funnel.
+Raw User Counts Shows the number of users who reached each step of the funnel, while the conversion rates at each stage (%) shows the conversion percentage between each stage.
 
-users_home	users_product	users_cart	users_checkout	users_purchase
-1872	1763	1567	855	792 
-<img width="365" height="51" alt="image" src="https://github.com/user-attachments/assets/04c2c736-855d-42f5-b5ec-db7ab0892750" />
+<img width="417" height="245" alt="image" src="https://github.com/user-attachments/assets/345a1168-dcc4-4c51-8a1a-02cc4f590a63" />  <img width="402" height="244" alt="image" src="https://github.com/user-attachments/assets/b947c942-ab50-411e-b4e2-4774efc254a8" />
 
-<img width="417" height="245" alt="image" src="https://github.com/user-attachments/assets/345a1168-dcc4-4c51-8a1a-02cc4f590a63" />
+The raw user counts funnel shows a significant decrease in customers from the cart to checkout stage, with a conversion rate of 54.56%. The other conversions have a relatively high conversion efficiency at rates 88% and above. 
 
-Conversion Rates at each stage (%)
-Shows the conversion percentage between each stage.
+To investigate reasons for this low conversion, we will now perform segmentation based on Device Type, Country, and Referral Source.
 
-home_to_product(%)	product_to_cart(%)	cart_to_checkout(%)	checkout_to_purchase(%)
-94.18	88.88	54.56	92.63<img width="456" height="51" alt="image" src="https://github.com/user-attachments/assets/c7afa494-12aa-48f6-b3fa-5e66921ccc83" />
-
-<img width="402" height="244" alt="image" src="https://github.com/user-attachments/assets/f21fd3bf-7b56-428d-95e7-92260a529ab4" />
-
-Further Segmentation
+**Further Segmentation**
 
 Device Type
 
+
 Country
 
+
+
 Referral Source
+
+
+
+
+
+
+
+
 
 ### Key Insights and Recommendations
 
