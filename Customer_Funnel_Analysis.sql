@@ -1,11 +1,13 @@
 -- Funnel analysis per user
+-- creating table named "funnel" with users and if they have successfully reached each step in the funnel
 WITH funnel AS (
     SELECT
         UserID,
 
-        -- Step flags per funnel stage
+        -- assigning binary classification, with 1 meaning user has successfully reached that page, and 0 meaning user has not reached that page
         MAX(CASE WHEN PageType = 'home' THEN 1 ELSE 0 END) AS step_home,
         MAX(CASE WHEN PageType = 'product_page' THEN 1 ELSE 0 END) AS step_product,
+        -- using the OR clause to apply multi-condition logic as both PageType and ItemsInCart signal users adding products to their cart. This is important as users may add items to their cart without clicking on the cart page itself.
         MAX(CASE WHEN PageType = 'cart' OR ItemsInCart > 0 THEN 1 ELSE 0 END) AS step_cart,
         MAX(CASE WHEN PageType = 'checkout' THEN 1 ELSE 0 END) AS step_checkout,
         MAX(CASE WHEN PageType = 'confirmation' OR Purchased = 1 THEN 1 ELSE 0 END) AS step_purchase
