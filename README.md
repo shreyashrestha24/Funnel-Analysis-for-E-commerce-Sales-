@@ -10,16 +10,6 @@ By identifying where and what type of users drop off, we can propose data-driven
 
 <img width="600" height="315" alt="image" src="https://github.com/user-attachments/assets/564615ce-f14e-4b9e-b7df-582b44830d72" />
 
-### Executive Summary 
-
-This analysis evaluates user progression across funnel stages, quantifies conversion rates, and highlights customer groups with the highest churn.
-
-Based on the analysis, the following strategies are suggested to reduce improve flow efficiency, conversions, to reduce customer churn at each stage, and increase sales:
-1. 
-
-2.
-
-3.
 
 ### E-commerce Dataset
 
@@ -42,20 +32,21 @@ The dataset has the following format:
 | ItemsInCart | Frequency of items in a users cart per unique session  |
 | Purchased  | Frequency of items that were successfully purchased  |
 
-### Tools
-
-Analysis for this project was conducted using SQL via DB Browser for SQLite. Visualisations were created in Excel. 
+### Tools: 
+SQL (via DB Browser for SQLite) for query writing 
+Excel for visualisations 
 
 ### Methodology 
 
-Firstly, the Kaggle dataset was downloaded as a .csv and loaded into Excel for initial inspection.
-Secondly, the dataset was loaded into DB Brower and appropriate SQL queries were created based on the analysis questions. 
+1. Inspect the CSV dataset (Kaggle) in Excel.
 
-The first query was written to calculate the raw number of customers at each step along with the conversion percentages between each step. The query is comprised of CTEs, subqueries, and can be found in this repository. 
+2. Load dataset into SQL for analysis using CTEs, subqueries, and segmentation queries.
 
-Following this, queries were written to perform additional segmentation steps to investigate how different customer groups (DeviceType, Country, ReferralSource) behave.
+3. Calculate raw user counts and conversion rates between funnel stages.
 
-The query results were loaded into Excel, and appropriate visualisations (Funnel charts, Clustered bar chart) were created.
+4. Segment data by Device Type, Country, and Referral Source.
+
+5. Visualise results in Excel using funnel charts and clustered bar charts.
 
 ### User Funnel Journey
 
@@ -71,7 +62,7 @@ The customer journey funnel consists of 5 stages:
 
   5. Purchase Confirmed: Users who have completed a successful purchase and received a order confirmation. This represents the final stage of the funnel.
 
-### Preliminary Results (Before Segmentation)
+### Results (Before Segmentation: Broader Funnel by Customer ID)
 
 Raw User Counts Shows the number of users who reached each step of the funnel, while the conversion rates at each stage (%) shows the conversion percentage between each stage.
 
@@ -81,26 +72,48 @@ The raw user counts funnel shows a significant decrease in customers from the ca
 
 To investigate reasons for this low conversion, we will now perform segmentation based on Device Type, Country, and Referral Source.
 
-**Further Segmentation**
+### Results: Further Segmentation 
 
-Device Type
+**Device Type**
 
+<img width="416" height="243" alt="image" src="https://github.com/user-attachments/assets/d01e9bc5-38db-4009-8563-7728b1d73967" />
 
-Country
+Conversion rates between funnel steps are largely consistent across device types, indicating this is unlikely to be a source of user drop-off in the funnel. Mobile users show a slightly higher interest from Home to Product page. 
 
+**Country**
 
+<img width="527" height="311" alt="image" src="https://github.com/user-attachments/assets/a6690230-5401-4cb1-bec7-07884edec9e1" />
 
-Referral Source
-
-
-
-
-
+Germany has the lowest conversion rate from Checkout to Purchase.
 
 
+**Referral Source**
+
+<img width="442" height="263" alt="image" src="https://github.com/user-attachments/assets/3c851afb-2a07-4340-b1b7-a32a65030e64" />
+
+Conversion rate between funnel steps are largely consistent across referral sources, indicating this is not a major source of friction of user drop-off. However, at the Cart to checkout stage, Google referred users show slightly better progression.
 
 
 ### Key Insights and Recommendations
+The lowest conversion rates across the user funnel journey are found in the cart to checkout. This indicates significant friction causing high user drop-off rates, and therefore loss of revenue. Therefore, targeting this stage is likely to result in the most improvement. 
+
+User churn may be due to 
+1. hidden costs
+2. requirement for an account to be created
+3. checkout button not being visibile to the user
+
+Recommendations should focus on enhancing customer experience and building trust, for example:
+
+1. Simplify the Checkout Process
+2. Increase Cost Transparency
+3. Improve Checkout Visibility and Accessibility
+4. Add Incentivisation for Purchase Completions
+5. Gather user feedback to identify reasons for friction at this stage
+6. Conduct A/B Testing and Iterate
+
+With the conversion rates being consistent across devices, UX is likely to be strong across device types. With the highest home to product conversion rate, phone screen type is likely to be more engaging for the user. However, the rest of the funnel journey is consistent, with the lowest rates at the cart to checkout stage.
+
+Google users cart to checkout progressions indicates slightly higher purchase intent than other sources, like if they were to land on the website through email and social media advertisements. Recommendations can be made to the marketing team to consider increasing investment toward high-intent search campaigns and directing search traffic to product-focused landing pages.
 
 ### Acknowledgements
 Thank you to Kaggle for providing this dataset and to you for making it this far!!!
